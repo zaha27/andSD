@@ -24,6 +24,23 @@ void NotaMaxima(Grupa g) {
     cout << "Nota minima: " << mini << '\n';
 }
 
+void NotaMaximaSiNume(Grupa g) {
+    int maxi = 1, mini = 10;
+    int indiceMaxim, indiceMinim;
+    for(int i = 0; i < g.nr; ++i) {
+        if(maxi < g.tab[i].nota) {
+            indiceMaxim = i;
+            maxi = g.tab[i].nota;
+        }
+        if(mini > g.tab[i].nota) {
+            indiceMinim = i;
+            mini = g.tab[i].nota;
+        }
+    }
+    cout << "Nota maxima este " << maxi << " si este luata de elevul " << g.tab[indiceMaxim].nume << '\n';
+    cout << "Nota maxima este " << mini << " si este luata de elevul " << g.tab[indiceMinim].nume << '\n';
+}
+
 int main() {
     Grupa g;
     InitGrupa(g);
@@ -44,7 +61,7 @@ int main() {
     cout << endl;
     cout << "Gasire nota maxima si minima" << '\n';
 
-    NotaMaxima(g);
+    NotaMaximaSiNume(g);
 
     StergeGrupa(g);
 
