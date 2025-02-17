@@ -14,6 +14,16 @@ void cautaStudent(Grupa g, char *nume) {
     cout << "Studentul nu a fost gasit!" << endl;
 }
 
+void NotaMaxima(Grupa g) {
+    int maxi = 1, mini = 10;
+    for(int i = 0; i < g.nr - 1; ++i) {
+        maxi = max(g.tab[i].nota,g.tab[i + 1].nota);
+        mini = min(g.tab[i].nota,g.tab[i + 1].nota);
+    }
+    cout << "Nota maxima: " << maxi << '\n';
+    cout << "Nota minima: " << mini << '\n';
+}
+
 int main() {
     Grupa g;
     InitGrupa(g);
@@ -30,6 +40,12 @@ int main() {
     cautaStudent(g, numeCautat);
 
     delete[] numeCautat;
+
+    cout << endl;
+    cout << "Gasire nota maxima si minima" << '\n';
+
+    NotaMaxima(g);
+
     StergeGrupa(g);
 
     return 0;
