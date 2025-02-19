@@ -38,7 +38,7 @@ void NotaMaximaSiNume(Grupa g) {
         }
     }
     cout << "Nota maxima este " << maxi << " si este luata de elevul " << g.tab[indiceMaxim].nume << '\n';
-    cout << "Nota maxima este " << mini << " si este luata de elevul " << g.tab[indiceMinim].nume << '\n';
+    cout << "Nota minima este " << mini << " si este luata de elevul " << g.tab[indiceMinim].nume << '\n';
 }
 
 int main() {
