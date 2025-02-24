@@ -27,8 +27,11 @@ int **citire_matrice(int n) {
 
 void rotire_matrice(int **a, int n) {
     for(int i = 0; i < n; i++) {
-        for(int j = 0; j < n; j++)
+        for(int j = i + 1; j < n; j++)
             swap(a[i][j], a[j][i]);
+    }
+    for (int i = 0; i < n / 2; ++i) {
+        swap(a[i], a[n - i - 1]);
     }
 }
 
