@@ -36,7 +36,23 @@ void afisare_matrice_clasic(int **a, int n) {
 }
 
 void afisare_matrice_spirala(int **a, int n) {
-    return ;
+    int k = 0;
+    while (k < (n + 1) / 2) {
+        for(int i = k ; i < n - k; ++i) {
+            cout << a[k][i] << ' ';
+        }
+        for(int i = k; i < n - k - 1; ++i) {
+            cout << a[i][n - k - 1] << ' ';
+        }
+        for(int i = n - k - 1; i > k; --i) {
+            cout << a[n - k - 1][i] << ' ';
+        }
+        for(int i = n - k - 1; i > k; --i) {
+            cout << a[i][k] << ' ';
+        }
+        k++;
+    }
+    cout << '\n';    
 }
 
 void dealocare_matrice(int **a, int n) {  

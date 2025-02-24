@@ -14,6 +14,8 @@ int main() {
 
     a = citire_matrice(n);
     afisare_matrice_clasic(a, n);
-    
+    afisare_matrice_spirala(a, n);
+
+    dealocare_matrice(a, n);
     return 0;
 }
