@@ -1,5 +1,5 @@
-#ifndef SPIRALA_H_
-#define SPIRALA_H_
+#ifndef ROTIRE90_H_
+#define ROTIRE90_H_
 
 int **alocare_matrice(int n);
 int **citire_matrice(int n);
