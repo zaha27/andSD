@@ -6,12 +6,19 @@ int main() {
     cout << "a) \n";
     Node* head = NULL;
     createList(head);
-    cout << "lista creata este: ";
-    displayList(head);
-    cout << "\n\n\n";
 /* b */
     cout << "b) \n";
-    cout << "\n\n\n";
+    cout << "lista creata este: ";
+    displayList(head);
+    cout << "\n";
 /* c */
+    cout << "c) \n";
+    int value;
+    cout << "Sa se introduca un numar pentru a il cauta in lista: ";
+    cin >> value;   //x 
+    searchList(head, value);
+    cout << "\n";
+/* d */
+
     return 0;
 }

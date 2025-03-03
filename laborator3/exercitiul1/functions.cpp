@@ -37,3 +37,16 @@ void deleteList(Node *&head) {
         delete temp;
     }
 }
+
+void searchList(Node *head, int value) {
+    //parcurgem lista 
+    int contor = 0;
+    Node* p = new Node;
+    for(p = head; p -> succ; p = p -> succ) {
+        contor++;
+        if(p -> data == value) {
+            cout << "Valoarea " << value << " a fost gasita la pozitia " << contor << '\n';
+            return ;
+        }
+    }
+}
