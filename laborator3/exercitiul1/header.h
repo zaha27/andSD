@@ -13,5 +13,6 @@ void createList(Node *&head);
 void displayList(Node *head);
 void deleteList(Node *&head);
 void searchList(Node *head, int value);
-
+void insertAtPosition(Node *&head, int value, int position);
+void deleteFromPosition(Node *&head, int position);
 #endif
