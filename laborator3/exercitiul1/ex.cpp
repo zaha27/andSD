@@ -63,6 +63,10 @@ int main() {
     afisareMijloc(head);
     cout << "\n";
 }
-
+/* j */ {
+    cout << "i) \n";
+    reverseIterativ(head);
+    cout << "\n";
+}
     return 0;
 }

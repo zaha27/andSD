@@ -177,9 +177,15 @@ void displayListInvers(Node *head) {
 }
 
 void afisareMijloc(Node *head) {
+
+    if (!head) { 
+        cout << "Lista este goala!" << endl;
+        return;
+    }
+
     Node *p = head;
     Node *q = head;
-    while(q -> succ) {
+    while(q && q -> succ) {
         p = p -> succ;
         q = q -> succ -> succ;
     }
