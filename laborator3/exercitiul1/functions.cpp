@@ -41,7 +41,7 @@ void deleteList(Node *&head) {
 void searchList(Node *head, int value) {
     int contor = 0;
     Node* p = new Node;
-    for(p = head; p -> succ; p = p -> succ) {
+    for(p = head; p ; p = p -> succ) {
         contor++;
         if(p -> data == value) {
             cout << "Valoarea " << value << " a fost gasita la pozitia " << contor << '\n';
@@ -99,4 +99,73 @@ void deleteFromPosition(Node *&head, int position) {
     Node* nodeToDelete = temp->succ; 
     temp->succ = temp->succ->succ;   
     delete nodeToDelete;  
+}
+
+void afisareCoadaCap(Node *head, int pozitie) {
+    int len = 0;
+    for (Node* p = head; p; p = p->succ) {
+        len++;
+    }
+
+    if (pozitie > len || pozitie < 1) {
+        cout << "Pozitie invalida!" << endl;
+        return;
+    }
+
+    int target = len - pozitie;
+
+    Node* p = head;
+    for (int i = 0; i < target; i++) {
+        p = p->succ;
+    }
+
+    cout << "Elementul de la pozitia " << pozitie << " de la coada spre cap este: " << p->data << endl;
+}
+
+void reverseIterativ(Node *&head) {
+    Node* prev = NULL;
+    Node* current = head;
+    Node* next = NULL;
+
+    while (current) {
+        next = current->succ;
+        current->succ = prev; 
+        prev = current;       
+        current = next;
+    }
+    head = prev;
+}
+
+Node* reverseRecursiv(Node *head) {
+    if (!head || !head->succ) {
+        return head; 
+    }
+
+    Node* newHead = reverseRecursiv(head->succ);
+    head->succ->succ = head; 
+    head->succ = NULL; 
+    return newHead;
+}
+
+void reverseStack(Node *&head) {
+    if (!head) return;
+
+    stack<Node*> s;
+    Node* temp = head;
+
+    while (temp) {
+        s.push(temp);
+        temp = temp->succ;
+    }
+
+    head = s.top();
+    s.pop();
+    temp = head;
+
+    while (!s.empty()) {
+        temp->succ = s.top();
+        s.pop();
+        temp = temp->succ;
+    }
+    temp->succ = NULL; 
 }

@@ -21,7 +21,7 @@ int main() {
     cout << "\n";
 }
 /* d */ {
-    cout << "c) \n";
+    cout << "d) \n";
     int value, position;
     cout << "Sa se introduca un numar pentru a il insera in lista: ";
     cin >> value;   //x 
@@ -33,7 +33,7 @@ int main() {
     cout << "\n";
 } 
 /* e */ {
-    cout << "d) \n";
+    cout << "e) \n";
     int position;
     cout << "Sa se introduca o pozitie pentru stergerea nodului: ";
     cin >> position;   
@@ -45,13 +45,15 @@ int main() {
 /* f */ {
     cout << "f) \n";
     int position;
-    cout << "Sa se introduca o pozitie pentru stergerea nodului: ";
+    cout << "Sa se introduca o pozitie (coada -> cap): ";
     cin >> position;   
-    deleteFromPosition(head, position);
-    cout << "Lista afisata: ";
-    displayList(head);
+    afisareCoadaCap(head, position);
     cout << "\n";
 }
-
+/* g */ {
+    cout << "f) \n";   
+    reverse(head);
+    cout << "\n";
+}
     return 0;
 }
