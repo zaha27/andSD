@@ -21,4 +21,5 @@ Node* reverseRecursive(Node* head);
 void reverseWithStack(Node *&head);
 void displayListInvers(Node *head);
 void afisareMijloc(Node *head);
+void areBucle(Node *head);
 #endif

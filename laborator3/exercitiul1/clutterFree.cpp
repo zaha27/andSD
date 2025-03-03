@@ -12,9 +12,9 @@ int main() {
     displayList(head);
     cout << "\n";
 }       
-/* i */ {
-    cout << "i) \n";
-    afisareMijloc(head);
+/* h */ {   
+    cout << "g) \n";
+    areBucle(head);
     cout << "\n";
 }
     return 0;

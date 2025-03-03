@@ -56,7 +56,11 @@ int main() {
     cout << "\n";
 }
 
-/* h */ //tema
+/* h */ {   
+    cout << "g) \n";
+    areBucle(head);
+    cout << "\n";
+}
 
 /* i */ {
     cout << "i) \n";
@@ -64,9 +68,11 @@ int main() {
     cout << "\n";
 }
 /* j */ {
-    cout << "i) \n";
+    cout << "j) \n";
     reverseIterativ(head);
     cout << "\n";
 }
+
+
     return 0;
 }

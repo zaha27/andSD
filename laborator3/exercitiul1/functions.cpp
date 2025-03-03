@@ -177,7 +177,6 @@ void displayListInvers(Node *head) {
 }
 
 void afisareMijloc(Node *head) {
-
     if (!head) { 
         cout << "Lista este goala!" << endl;
         return;
@@ -190,4 +189,24 @@ void afisareMijloc(Node *head) {
         q = q -> succ -> succ;
     }
     cout << p -> data;
+}
+
+void areBucle(Node *head) {
+    if (!head) { 
+        cout << "Lista este goala!" << endl;
+        return;
+    }
+
+    Node *p = head;
+    Node *q = head;
+    while(q && q -> succ) {
+        p = p -> succ;
+        q = q -> succ -> succ;
+
+        if(p == q) {
+            cout << "Lista are bucle! \n";
+            return ;
+        }
+    }
+    cout << "Lista nu are bucle! \n"; 
 }
