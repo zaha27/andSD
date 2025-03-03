@@ -169,3 +169,19 @@ void reverseStack(Node *&head) {
     }
     temp->succ = NULL; 
 }
+
+void displayListInvers(Node *head) {
+    reverseIterativ(head);
+    displayList(head);
+    reverseIterativ(head);
+}
+
+void afisareMijloc(Node *head) {
+    Node *p = head;
+    Node *q = head;
+    while(q -> succ) {
+        p = p -> succ;
+        q = q -> succ -> succ;
+    }
+    cout << p -> data;
+}

@@ -11,7 +11,7 @@ int main() {
     cout << "lista creata este: ";
     displayList(head);
     cout << "\n";
-}   
+}       
 /* c */ {
     cout << "c) \n";
     int value;
@@ -51,9 +51,18 @@ int main() {
     cout << "\n";
 }
 /* g */ {
-    cout << "f) \n";   
-    reverse(head);
+    cout << "g) \n";   
+    displayListInvers(head);
     cout << "\n";
 }
+
+/* h */ //tema
+
+/* i */ {
+    cout << "i) \n";
+    afisareMijloc(head);
+    cout << "\n";
+}
+
     return 0;
 }
