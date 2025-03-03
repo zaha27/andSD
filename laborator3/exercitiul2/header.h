@@ -9,13 +9,14 @@ struct Node {
     Node* succ; 
 };
 
-//meniu pointer la o functie pentru a primi operatia necesara
-void (*selectareOperatie(void))(void);
-
+// Prototipuri pentru functii
 void insertAtBeginning(Node *&head, string nume, int telefon);
 void createList(Node *&head);
 void displayList(Node *head);
-void deleteList(Node *&head, string nume);
-void searchList(Node *head, string nume);
+void deleteList(Node *&head);
+void searchList(Node *head, string value);
+
+// Meniu pentru selectarea operatiilor
+void selectareOperatie(Node *&head);
 
 #endif
