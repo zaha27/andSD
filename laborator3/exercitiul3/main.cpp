@@ -11,7 +11,8 @@ int main() {
     createList(headDoi);
     displayList(headDoi);
 
-    concatenareListe(headUnu, headDoi);
+    //concatenareListe(headUnu, headDoi);
+    interclasareListe(headUnu, headDoi);
     displayList(headUnu);
 
     return 0;
