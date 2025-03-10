@@ -12,4 +12,6 @@ void insertAtBeginning(Node *&head, int value);
 void createList(Node *&head);
 void displayList(Node *head);
 void reverseIterativ(Node *&head);
+void displayPermutari(Node *head);
+
 #endif

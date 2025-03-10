@@ -3,10 +3,17 @@
 
 void insertAtBeginning(Node *&head, int value) {
     Node* p = new Node(); 
-    p->data = value;      
-    p->succ = head->succ;
-    head->succ = p;       
-    swap(head->data, p->data);             
+    p->data = value;   
+    
+
+    if(head == nullptr) {
+        p->succ = p;
+        head = p;
+    } else {
+        p->succ = head->succ;
+        head->succ = p;       
+        swap(head->data, p->data);             
+    }
 }
 
 void createList(Node *&head) {
@@ -23,23 +30,37 @@ void createList(Node *&head) {
 
 void displayList(Node *head) {
     Node* temp = head;
-    while (temp) {
+    do {
         cout << temp->data << " -> ";
         temp = temp->succ;
-    }
-    cout << "NULL" << '\n';
+    } while (temp != head);
+    cout << "head";
+}
+
+void displayPermutari(Node *head) {
+    Node *temp = head;
+    do {
+        displayList(temp);
+        cout << '\n';
+        temp = temp->succ;
+    } while (temp != head);
 }
 
 void reverseIterativ(Node *&head) {
     Node* prev = NULL;
     Node* current = head;
     Node* next = NULL;
+    Node* tail = head;
 
-    while (current) {
-        next = current->succ;
-        current->succ = prev; 
-        prev = current;       
-        current = next;
-    }
+     do {
+        next = current->succ;  
+        current->succ = prev;  
+        prev = current;        
+        current = next;        
+    } while (current != head); 
+
+    head -> succ = prev;
     head = prev;
+
+    displayList(head);
 }
