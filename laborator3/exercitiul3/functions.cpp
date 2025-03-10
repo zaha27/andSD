@@ -60,10 +60,9 @@ void interclasareListe(Node *&head, Node *secundar) {
         tail = tail->succ;
     }
 
-    // Dacă mai sunt elemente rămase într-una din liste
     if (head) tail->succ = head;
     else tail->succ = secundar;
 
-    head = dummy->succ;  // Mutăm `head` la începutul noii liste
+    head = dummy->succ;  
     delete dummy;
 }
