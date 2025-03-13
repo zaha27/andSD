@@ -133,6 +133,7 @@ void reverseIterativ(Node *&head) {
         prev = current;       
         current = next;
     }
+    
     head = prev;
 }
 
