@@ -7,15 +7,16 @@ int main() {
 
     createList(headUnu);
     displayList(headUnu);
+    cout << '\n';
 
     createList(headDoi);
     displayList(headDoi);
+    cout << '\n';
 
-    concatenareListe(headUnu, headDoi);
+    //concatenareListe(headUnu, headDoi);
 
-    //interclasareListe(headUnu, headDoi);
+    interclasareListe(headUnu, headDoi);
     displayList(headUnu);
-    displayList(headDoi);
 
     return 0;
 }

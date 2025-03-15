@@ -3,9 +3,17 @@
 
 void insertAtBeginning(Node *&head, int value) {
     Node* p = new Node(); 
-    p->data = value;      
-    p->succ = head;       
-    head = p;             
+    p->data = value;   
+    
+
+    if(head == nullptr) {
+        p->succ = p;
+        head = p;
+    } else {
+        p->succ = head->succ;
+        head->succ = p;       
+        swap(head->data, p->data);             
+    }
 }
 
 void createList(Node *&head) {
@@ -22,20 +30,38 @@ void createList(Node *&head) {
 
 void displayList(Node *head) {
     Node* temp = head;
-    while (temp) {
+    do {
         cout << temp->data << " -> ";
         temp = temp->succ;
-    }
-    cout << "head\n";
+    } while (temp != head);
 }
 
-void deleteList(Node *&head) {
-    Node* temp;
-    while (head) {
-        temp = head;
-        head = head->succ;
-        delete temp;
-    }
+void displayPermutari(Node *head) {
+    Node *temp = head;
+    do {
+        displayList(temp);
+        cout << '\n';
+        temp = temp->succ;
+    } while (temp != head);
+}
+
+void reverseIterativ(Node *&head) {
+    Node* prev = NULL;
+    Node* current = head;
+    Node* next = NULL;
+    Node* tail = head;
+
+     do {
+        next = current->succ;  
+        current->succ = prev;  
+        prev = current;        
+        current = next;        
+    } while (current != head); 
+
+    head -> succ = prev;
+    head = prev;
+
+    displayList(head);
 }
 
 void concatenareListe(Node *&head, Node *secundar) {
@@ -65,23 +91,6 @@ void concatenareListe(Node *&head, Node *secundar) {
 }
 
 void interclasareListe(Node *&head, Node *secundar) {
-    Node* dummy = new Node();  
-    Node* tail = dummy;       
-    
-    while (head && secundar) {
-        if (head->data <= secundar->data) {
-            tail->succ = head;
-            head = head->succ;
-        } else {
-            tail->succ = secundar;
-            secundar = secundar->succ;
-        }
-        tail = tail->succ;
-    }
-
-    if (head) tail->succ = head;
-    else tail->succ = secundar;
-
-    head = dummy->succ;  
-    delete dummy;
+    //vector -> sortat -> creare lista cu valorile din vector
 }
+
