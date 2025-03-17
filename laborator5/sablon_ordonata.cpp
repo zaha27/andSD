@@ -29,10 +29,9 @@ bool pop(int &vf) {
 int top(int stiva[DIM_MAX], int vf) {
     if (!isEmpty(vf)) {
         return stiva[vf];
-    } else {
-        cerr << "Eroare: stiva goala" << endl;
-        return -1;  
-    }
+    } 
+    cerr << "Eroare: stiva goala" << endl;
+    return -1;    
 }
 
 int main() {

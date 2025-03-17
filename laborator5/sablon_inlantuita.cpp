@@ -1,5 +1,7 @@
 #include <iostream>
 
+using namespace std;
+
 struct Node {
     int data;
     Node* succ;
@@ -31,10 +33,11 @@ bool pop(Stack &head) {
 
 int top(const Stack &head) {
     if(!isEmpty(head)) {
-        std::cerr << "Eroare: stiva goala" << std::endl;
-    } else {
-        return head -> data;
+        cerr << "Eroare: stiva goala" << endl;
     }
+    
+    return head -> data;
+    
 }
 
 
@@ -44,17 +47,17 @@ int main() {
     push(s, 10);
     push(s, 20);
     push(s, 30);
-
-    std::cout << "varf: " << top(s) << std::endl;
+    
+    cout << "varf: " << top(s) << endl;
 
     pop(s);
-    std::cout << "varf dupa pop: " << top(s) << std::endl;
+    cout << "varf dupa pop: " << top(s) << endl;
 
     while (!isEmpty(s)) {
         pop(s);
     }
 
-    std::cout << "stiva goala (Da/Nu):  " << (isEmpty(s) ? "Da" : "Nu") << std::endl;
+    cout << "stiva goala (Da/Nu):  " << (isEmpty(s) ? "Da" : "Nu") << endl;
 
     return 0;
 }
