@@ -1,4 +1,5 @@
 #include <iostream>
+#include "CImg.h"
 
 using namespace std;
 using namespace cimg_library;
@@ -21,6 +22,9 @@ Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
     cout << "Color: " << (unsigned int)culoareDomeniu << "( " << init.x << ", " << init.y << ")" << endl;
 
     //... adaugati logica aplicatiei aici
+    void solve() {
+        
+    }
     //afisati imaginea dupa fiecare pas pentru a vedea cum se modifica culoarea domeniului in timp real
     
     cout << "DONE!" << endl;
@@ -28,7 +32,10 @@ Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
 }
 
 int main() {
-    CImg<unsigned char> imgIn("/home/ubuntu/SD/ColorareDomeniu/img.jpg"); // Incarca imaginea, de specificat calea completa
+    //CImg<unsigned char> imgIn("/Users/zaha/Desktop/andSD/laborator6_coada/exercitiul3/msc/img.jpg"); // Incarca imaginea, de specificat calea completa
+
+    CImg<unsigned char> imgIn(256, 256, 1, 1, 0); // imagine neagră 256x256
+    imgIn.draw_text(50, 120, "Test", "white");
 
     // Creati o fereastra pentru a vizualiza imaginile
     CImgDisplay dispIn(imgIn, "Input");
