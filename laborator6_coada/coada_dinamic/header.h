@@ -1,19 +1,19 @@
 #ifndef HEADER_H_
 #define HEADER_H_
-using namespace std;
 
-#define DIMMAX 8
 typedef int Atom;
 
-struct Queue {
-    int head,tail;
-    Atom vect[DIMMAX];
+struct Element{
+    Atom data;
+    Element* succ;
+};
+    struct Queue {
+    Element *head, *tail;
 };
 void initQueue(Queue& Q);
 void put(Queue& Q, Atom a);
 Atom get(Queue& Q);
-Atom front(const Queue& Q); 
-int isEmpty(const Queue& Q); 
-int isFull(const Queue& Q);
+Atom front(Queue Q);
+int isEmpty(Queue Q);
 
 #endif
