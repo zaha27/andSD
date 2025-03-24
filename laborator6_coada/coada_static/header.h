@@ -1,6 +1,6 @@
 #ifndef HEADER_H_
 #define HEADER_H_
-using namespace std;
+
 
 #define DIMMAX 8
 typedef int Atom;
