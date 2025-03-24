@@ -6,35 +6,18 @@ int main() {
     Queue Q;
     initQueue(Q);
 
-    cout << "Adaugam elemente in coada: ";
-    for (int i = 1; i <= 5; ++i) {
-        cout << i << " ";
-        put(Q, i);
-    }
-    cout << endl;
+    put(Q, 1);
+    put(Q, 2);
+    put(Q, 3);
 
-    cout << "Elementul din fata este: " << front(Q) << endl;
+    cout << front(Q) << " ";  // 1
+    cout << get(Q) << " ";    // 1
+    cout << get(Q) << " ";    // 2
 
-    cout << "Scoatem 2 elemente: ";
-    cout << get(Q) << " ";
-    cout << get(Q) << endl;
-
-    //front
-    cout << "Elementul din fata acum este: " << front(Q) << endl;
-
-    //put
-    cout << "Adaugam alte elemente: 6, 7, 8" << endl;
-    put(Q, 6);
-    put(Q, 7);
-    put(Q, 8);
-
-
-    //get
-    cout << "Elementele ramase in coada: ";
-    while (!isEmpty(Q)) {
-        cout << get(Q) << " ";
-    }
-    cout << endl;
+    put(Q, 4);
+    cout << front(Q) << " ";  // 3
+    cout << get(Q) << " ";    // 3
+    cout << get(Q) << endl;   // 4
 
     return 0;
 }
