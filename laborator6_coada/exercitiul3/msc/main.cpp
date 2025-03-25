@@ -33,11 +33,16 @@ Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
 
 int main() {
     //CImg<unsigned char> imgIn("/Users/zaha/Desktop/andSD/laborator6_coada/exercitiul3/msc/img.jpg"); // Incarca imaginea, de specificat calea completa
+CImg<unsigned char> imgIn(200, 200, 1, 1, 255);
 
-    CImg<unsigned char> imgIn(256, 256, 1, 1, 0); // imagine neagră 256x256
-    imgIn.draw_text(50, 120, "Test", "white");
+    unsigned char alb[] = {0};
+    unsigned char negru[] = {255};
+    imgIn.draw_rectangle(50, 50, 150, 150, alb);
 
-    // Creati o fereastra pentru a vizualiza imaginile
+    imgIn.draw_rectangle(80, 80, 120, 120, negru);
+
+
+ // Creati o fereastra pentru a vizualiza imaginile
     CImgDisplay dispIn(imgIn, "Input");
     CImgDisplay dispOut;
 
