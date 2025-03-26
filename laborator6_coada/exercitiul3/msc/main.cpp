@@ -5,55 +5,119 @@ using namespace std;
 using namespace cimg_library;
 using namespace std::chrono;
 
-struct Pozitie {
+// ------------------ STRUCTURI ȘI TIPURI ------------------
+
+struct Poz {
     int x, y;
 };
 
-Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
+Poz directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
 
-CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Pozitie init, unsigned char color, CImgDisplay& dispOut) {
-    CImg<unsigned char> imgOut = in; // imgOut este o copie a lui in
+struct Element {
+    Poz data;
+    Element* succ;
+};
 
-    //dimensiunile imaginii
+struct Queue {
+    Element* head;
+    Element* tail;
+};
+
+// ------------------ COADA ------------------
+
+void initQueue(Queue& Q) {
+    Q.head = Q.tail = nullptr;
+}
+
+int isEmpty(Queue Q) {
+    return Q.head == nullptr && Q.tail == nullptr;
+}
+
+void put(Queue& Q, Poz a) {
+    Element* temp = new Element;
+    temp->data = a;
+    temp->succ = nullptr;
+
+    if (isEmpty(Q)) {
+        Q.head = Q.tail = temp;
+    } else {
+        Q.tail->succ = temp;
+        Q.tail = temp;
+    }
+}
+
+Poz get(Queue& Q) {
+    if (isEmpty(Q)) {
+        cout << "coada este goala";
+        exit(1);
+    }
+
+    Poz val = Q.head->data;
+    Element* temp = Q.head;
+    Q.head = Q.head->succ;
+    delete temp;
+
+    if (Q.head == nullptr) {
+        Q.tail = nullptr;
+    }
+
+    return val;
+}
+
+// ------------------ FUNCTIE DE COLORARE ------------------
+
+CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Poz init, unsigned char color, CImgDisplay& dispOut) {
+    CImg<unsigned char> imgOut = in;
+
     int width = in.width();
     int height = in.height();
 
-    unsigned char culoareDomeniu = in(init.x, init.y); // obtinem valoarea pixelului de la pozitia initiala
-    cout << "Color: " << (unsigned int)culoareDomeniu << "( " << init.x << ", " << init.y << ")" << endl;
+    unsigned char culoareDomeniu = in(init.x, init.y);
+    cout << "Color: " << (unsigned int)culoareDomeniu << " (" << init.x << ", " << init.y << ")" << endl;
 
-    //... adaugati logica aplicatiei aici
+    Queue Q;
+    initQueue(Q);
+    put(Q, init);
+    imgOut(init.x, init.y) = color;
 
-    //afisati imaginea dupa fiecare pas pentru a vedea cum se modifica culoarea domeniului in timp real
+    while (!isEmpty(Q)) {
+        Poz p = get(Q);
+        for (int d = 0; d < 4; ++d) {
+            Poz pi = { p.x + directii[d].x, p.y + directii[d].y };
+            if ((pi.x >= 0 && pi.x < width) && (pi.y >= 0 && pi.y < height) &&
+                imgOut(pi.x, pi.y) == culoareDomeniu) {
+                imgOut(pi.x, pi.y) = color;
+                put(Q, pi);
+            }
+        }
+        dispOut.display(imgOut);
+        cimg::sleep(10);
+    }
+
     cout << "DONE!" << endl;
     return imgOut;
 }
 
+// ------------------ MAIN ------------------
+
 int main() {
-    //CImg<unsigned char> imgIn("/Users/zaha/Desktop/andSD/laborator6_coada/exercitiul3/msc/img.jpg"); // Incarca imaginea, de specificat calea completa
-CImg<unsigned char> imgIn(200, 200, 1, 1, 255);
+    CImg<unsigned char> imgIn(200, 200, 1, 1, 255); // imagine albă
 
     unsigned char alb[] = {0};
     unsigned char negru[] = {255};
-    imgIn.draw_rectangle(50, 50, 150, 150, alb);
+    imgIn.draw_rectangle(50, 50, 150, 150, alb);     // pătrat negru
+    imgIn.draw_rectangle(80, 80, 120, 120, negru);   // pătrat alb în mijloc
 
-    imgIn.draw_rectangle(80, 80, 120, 120, negru);
-
-
- // Creati o fereastra pentru a vizualiza imaginile
     CImgDisplay dispIn(imgIn, "Input");
     CImgDisplay dispOut;
 
-    Pozitie posInit;
+    Poz posInit;
     posInit.x = imgIn.width() / 2;
     posInit.y = imgIn.height() / 2;
 
-    // imgIn este o imagine grayscale (fiecare pixel este reprezentat de o valoare pe 8 biti, in [0,255])
     CImg<unsigned char> imgOut = ColoreazaDomeniu(imgIn, posInit, (unsigned char)255, dispOut);
-
-    // Afisarea imaginilor
     dispOut = CImgDisplay(imgOut, "Output");
 
-    // Asteptam ca utilizatorul sa inchida fereastra
     while (!dispIn.is_closed() && !dispOut.is_closed()) {
         dispIn.wait();
         dispOut.wait();

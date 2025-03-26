@@ -1,34 +1,33 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "type": "cppbuild",
-        "label": "Build CImg project (macOS + XQuartz)",
-        "command": "/usr/bin/g++",
-        "args": [
-          "-std=c++17",
-          "-fdiagnostics-color=always",
-          "-g",
-          "${file}",
-          "-I/opt/X11/include",         // ✅ headerele XQuartz (X11)
-          "-L/opt/X11/lib",             // ✅ bibliotecile XQuartz (X11)
-          "-lX11",                      // ✅ link către X11
-          "-lpthread",
-          "-o",
-          "${fileDirname}/${fileBasenameNoExtension}"
-        ],
-        "options": {
-          "cwd": "${fileDirname}"
-        },
-        "problemMatcher": [
-          "$gcc"
-        ],
-        "group": {
-          "kind": "build",
-          "isDefault": true
-        },
-        "detail": "Task pentru compilare CImg + XQuartz (macOS)"
-      }
-    ]
-  }
-  
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "type": "cppbuild",
+      "label": "Build CImg (main.cpp only)",
+      "command": "/usr/bin/g++",
+      "args": [
+        "-std=c++17",
+        "-fdiagnostics-color=always",
+        "-g",
+        "main.cpp",
+        "-I/opt/X11/include",
+        "-L/opt/X11/lib",
+        "-lX11",
+        "-lpthread",
+        "-o",
+        "program"
+      ],
+      "options": {
+        "cwd": "${fileDirname}"
+      },
+      "problemMatcher": [
+        "$gcc"
+      ],
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "detail": "Compilare proiect CImg cu XQuartz (main.cpp simplu)"
+    }
+  ]
+}
