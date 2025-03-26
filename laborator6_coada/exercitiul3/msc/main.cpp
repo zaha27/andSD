@@ -5,7 +5,7 @@ using namespace std;
 using namespace cimg_library;
 using namespace std::chrono;
 
-// ------------------ STRUCTURI ȘI TIPURI ------------------
+// ------------------ STRUCTURI SI TIPURI ------------------
 
 struct Poz {
     int x, y;
@@ -23,7 +23,7 @@ struct Queue {
     Element* tail;
 };
 
-// ------------------ COADA ------------------
+// ------------------ FUNCTII COADA ------------------
 
 void initQueue(Queue& Q) {
     Q.head = Q.tail = nullptr;
@@ -91,7 +91,6 @@ CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Poz init, unsigned
             }
         }
         dispOut.display(imgOut);
-        cimg::sleep(10);
     }
 
     cout << "DONE!" << endl;
@@ -101,21 +100,24 @@ CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Poz init, unsigned
 // ------------------ MAIN ------------------
 
 int main() {
-    CImg<unsigned char> imgIn(200, 200, 1, 1, 255); // imagine albă
+    CImg<unsigned char> imgIn(200, 200, 1, 1, 255);
 
     unsigned char alb[] = {0};
     unsigned char negru[] = {255};
-    imgIn.draw_rectangle(50, 50, 150, 150, alb);     // pătrat negru
-    imgIn.draw_rectangle(80, 80, 120, 120, negru);   // pătrat alb în mijloc
+    imgIn.draw_rectangle(50, 50, 150, 150, alb);    
+    imgIn.draw_rectangle(80, 80, 120, 120, negru);
 
     CImgDisplay dispIn(imgIn, "Input");
     CImgDisplay dispOut;
 
     Poz posInit;
-    posInit.x = imgIn.width() / 2;
-    posInit.y = imgIn.height() / 2;
+    //posInit.x = imgIn.width() / 2;
+    //posInit.y = imgIn.height() / 2;
+    posInit.x = 10;
+    posInit.y = 10;
 
-    CImg<unsigned char> imgOut = ColoreazaDomeniu(imgIn, posInit, (unsigned char)255, dispOut);
+
+    CImg<unsigned char> imgOut = ColoreazaDomeniu(imgIn, posInit, (unsigned char)128, dispOut);
     dispOut = CImgDisplay(imgOut, "Output");
 
     while (!dispIn.is_closed() && !dispOut.is_closed()) {
