@@ -11,7 +11,7 @@ struct Pozitie {
 
 Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
 
-    CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Pozitie init, unsigned char color, CImgDisplay& dispOut) {
+CImg<unsigned char> ColoreazaDomeniu(CImg<unsigned char>& in, Pozitie init, unsigned char color, CImgDisplay& dispOut) {
     CImg<unsigned char> imgOut = in; // imgOut este o copie a lui in
 
     //dimensiunile imaginii
