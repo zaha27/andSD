@@ -22,9 +22,8 @@ Pozitie directii[4] = { { -1, 0 }, { 0, -1 }, { 1, 0 }, { 0, 1 } };
     cout << "Color: " << (unsigned int)culoareDomeniu << "( " << init.x << ", " << init.y << ")" << endl;
 
     //... adaugati logica aplicatiei aici
-    
+
     //afisati imaginea dupa fiecare pas pentru a vedea cum se modifica culoarea domeniului in timp real
-    
     cout << "DONE!" << endl;
     return imgOut;
 }
