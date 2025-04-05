@@ -1,11 +1,9 @@
 #include <iostream>
 #include "header.h"
 
+using namespace std;
+
 int main() {
-    Nod *HT[M];
-    init(HT);
-    
-    afisare_tabel(HT)
-    
+    afisareTabel();
     return 0;
 }
