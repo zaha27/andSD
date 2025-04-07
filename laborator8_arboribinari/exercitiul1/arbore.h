@@ -7,20 +7,18 @@ struct Nod {
     Nod* drt;
 };
 
-// Creare arbore dintr-o intrare în formă cu paranteze
 Nod* creareArbore();
 
-// Parcurgeri
 void afisarePreordine(Nod* rad);
 void afisareInordine(Nod* rad);
 void afisarePostordine(Nod* rad);
 
-// Operații
 int adancime(Nod* rad);
 int numarNoduri(Nod* rad);
 int numarFrunze(Nod* rad);
+void afisare_f(Nod* rad);
 
-// Dezalocare memorie
+
 void distrugeArbore(Nod* rad);
 
 #endif

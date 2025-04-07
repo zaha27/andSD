@@ -1,23 +1,26 @@
 #include <iostream>
 using namespace std;
+
 #include "arbore.h"
 
 int main() {
-    cout << "Introdu arborele in forma cu paranteze (- pentru NULL):\n";
+    // Exemplu: A(B(-,-),C(D(-,-),E(-,-)))
+    // Input:   A B - - C D - - E - -
+
+    cout << "introdu arborele" << endl;
     Nod* rad = creareArbore();
 
-    cout << "\nParcurgere PREORDINE: ";
-    afisarePreordine(rad);
-
-    cout << "\nParcurgere INORDINE: ";
+    cout << "\ninordine: ";
     afisareInordine(rad);
-
-    cout << "\nParcurgere POSTORDINE: ";
+    cout << "\npostordine: ";
     afisarePostordine(rad);
 
-    cout << "\n\nAdancime: " << adancime(rad);
-    cout << "\nNumar noduri: " << numarNoduri(rad);
-    cout << "\nNumar frunze: " << numarFrunze(rad) << "\n";
+    cout << "\n\nadancime: " << adancime(rad);
+    cout << "\nnumarul de noduri: " << numarNoduri(rad);
+    cout << "\nnumarul de frunze: " << numarFrunze(rad) << endl;
+
+    cout << "\nnodurile care au valoarea mai mare decat toate valorile din subarbori:\n";
+    afisare_f(rad);
 
     distrugeArbore(rad);
     return 0;
