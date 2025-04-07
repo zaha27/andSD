@@ -23,7 +23,8 @@ int main() {
     cout << "\nNodurile care au valoarea mai mare decat toate valorile din subarbori:\n";
     afisare_f(rad);
 
-	cout <<
+	cout << "\nNodurile pentru care subarborele stang este mai total mai mare decat subarborele drept:\n";
+	afisare_g(rad);
 
     distrugeArbore(rad);
     return 0;

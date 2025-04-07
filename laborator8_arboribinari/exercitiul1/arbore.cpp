@@ -3,105 +3,29 @@ using namespace std;
 
 #include "arbore.h"
 
-Nod* creareArbore() {
-    char ch;
-    cin >> ch;
+int main() {
+    cout << "Introduceti arborele in forma A(B(-,C),D(E(F,-),G(H,-))):\n";
+    Nod* rad = creareArbore();
 
-    if (ch == '-') {
-        return nullptr;
-    }
+    cout << "\nParcurgere inordine: ";
+    afisareInordine(rad);
 
-    Nod* p = new Nod;
-    p->data = ch;
-    p->stg = creareArbore();
-    p->drt = creareArbore();
+    cout << "\nParcurgere postordine: ";
+    afisarePostordine(rad);
 
-    return p;
-}
+    cout << "\nParcurgere preordine: ";
+    afisarePreordine(rad);
 
-void afisarePreordine(Nod* p) {
-    if (p) {
-        cout << p->data << " ";
-        afisarePreordine(p->stg);
-        afisarePreordine(p->drt);
-    }
-}
+    cout << "\n\nAdancime: " << adancime(rad);
+    cout << "\nNumar noduri: " << numarNoduri(rad);
+    cout << "\nNumar frunze: " << numarFrunze(rad) << endl;
 
-void afisareInordine(Nod* p) {
-    if (p) {
-        afisareInordine(p->stg);
-        cout << p->data << " ";
-        afisareInordine(p->drt);
-    }
-}
+    cout << "\nNodurile care au valoarea mai mare decat toate valorile din subarbori:\n";
+    afisare_f(rad);
 
-void afisarePostordine(Nod* p) {
-    if (p) {
-        afisarePostordine(p->stg);
-        afisarePostordine(p->drt);
-        cout << p->data << " ";
-    }
-}
+	cout << "\nNodurile pentru care subarborele stang este mai total mai mare decat subarborele drept:\n";
+	afisare_g(rad);
 
-int adancime(Nod* p) {
-    if (!p) {
-        return 0;
-    }
-
-    int ad_stg = adancime(p->stg);
-    int ad_drt = adancime(p->drt);
-
-    return 1 + max(ad_stg, ad_drt);
-}
-
-int numarNoduri(Nod* p) {
-    if (!p) {
-        return 0;
-    }
-
-    return 1 + numarNoduri(p->stg) + numarNoduri(p->drt);
-}
-
-int numarFrunze(Nod* p) {
-    if (!p) {
-        return 0;
-    }
-
-    if (!p->stg && !p->drt) {
-        return 1;
-    }
-
-    return numarFrunze(p->stg) + numarFrunze(p->drt);
-}
-
-void distrugeArbore(Nod* p) {
-    if (p) {
-        distrugeArbore(p->stg);
-        distrugeArbore(p->drt);
-        delete p;
-    }
-}
-
-char max_subarbore(Nod* p) {
-    if (p == nullptr) {
-        return 0; // sau cel mai mic caracter, ex: ' '
-    }
-
-    char max_st = (p->stg != nullptr) ? max(p->stg->data, max_subarbore(p->stg)) : 0;
-    char max_dr = (p->drt != nullptr) ? max(p->drt->data, max_subarbore(p->drt)) : 0;
-
-    return max(max_st, max_dr);
-}
-
-void afisare_f(Nod* p) {
-    if (p == nullptr) {
-        return;
-    }
-
-    afisare_f(p->stg);
-    afisare_f(p->drt);
-
-    if (p->data > max_subarbore(p)) {
-        cout << p->data << endl;
-    }
+    distrugeArbore(rad);
+    return 0;
 }

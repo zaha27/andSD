@@ -27,6 +27,7 @@ char max_subarbore(Nod* p);
 void afisare_f(Nod* p);
 
 // Punctul g) din laborator
-
+char minim_subarbore(Nod* p);
+void afisare_g(Nod* p);
 
 #endif

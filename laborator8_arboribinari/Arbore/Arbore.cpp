@@ -160,3 +160,10 @@ void afisare_f(Nod* p) {
         cout << p->data << endl;
     }
 }
+
+char minim_subarbore(Nod* p) {
+	exit(1);
+}
+void afisare_g(Nod* p) {
+	return ;
+}

@@ -9,16 +9,25 @@ struct Nod {
 
 Nod* creareArbore();
 
-void afisarePreordine(Nod* rad);
-void afisareInordine(Nod* rad);
-void afisarePostordine(Nod* rad);
+// Parcurgeri
+void afisarePreordine(Nod* p);
+void afisareInordine(Nod* p);
+void afisarePostordine(Nod* p);
 
-int adancime(Nod* rad);
-int numarNoduri(Nod* rad);
-int numarFrunze(Nod* rad);
-void afisare_f(Nod* rad);
+// Operatii pe arbore
+int adancime(Nod* p);
+int numarNoduri(Nod* p);
+int numarFrunze(Nod* p);
 
+// Eliberare memorie
+void distrugeArbore(Nod* p);
 
-void distrugeArbore(Nod* rad);
+// Punctul f) din laborator
+char max_subarbore(Nod* p);
+void afisare_f(Nod* p);
+
+// Punctul g) din laborator
+char minim_subarbore(Nod* p);
+void afisare_g(Nod* p);
 
 #endif
