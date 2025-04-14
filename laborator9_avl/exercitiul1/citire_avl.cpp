@@ -1,13 +1,12 @@
 #include <iostream>
 #include <cctype>
 #include <cstdlib>
+
 using namespace std;
 
-#include "arbore.h"
+#include "avl.h"
 
 static char car = 0;
-
-//citire
 
 static void eroare() {
     printf("Sirul de intrare este eronat!\n");
