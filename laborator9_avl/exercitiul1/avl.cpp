@@ -59,7 +59,7 @@ bool search(Nod *&rad, int val) {
 }
 void deleteNod(Nod *&rad, int val) {
     if(rad == nullptr) {
-        cout<<"Eroare: Valoarea "<< val <<"nu este in arbore!";
+        cout<<"Eroare: Valoarea "<< val <<"nu este in arbore";
     } else if(val < rad->data) {
         deleteNod(rad->stg, val);
     } else if(val > rad->data) {
