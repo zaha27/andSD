@@ -1,27 +1,4 @@
 
-void afisarePreordine(Nod* p) {
-    if (p) {
-        cout << p->data << " ";
-        afisarePreordine(p->stg);
-        afisarePreordine(p->drt);
-    }
-}
-
-void afisareInordine(Nod* p) {
-    if (p) {
-        afisareInordine(p->stg);
-        cout << p->data << " ";
-        afisareInordine(p->drt);
-    }
-}
-
-void afisarePostordine(Nod* p) {
-    if (p) {
-        afisarePostordine(p->stg);
-        afisarePostordine(p->drt);
-        cout << p->data << " ";
-    }
-}
 
 int adancime(Nod* p) {
     if (!p) {
