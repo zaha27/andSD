@@ -1,5 +1,5 @@
-#ifndef AVL_H
-#define AVL_H
+#ifndef BST_H
+#define BST_H
 
 struct Nod {
     int data;

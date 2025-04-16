@@ -1,5 +1,5 @@
 #include <iostream>
-#include "avl.h"
+#include "bst.h"
 
 using namespace std;
 
