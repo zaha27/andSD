@@ -3,6 +3,7 @@
 
 using namespace std;
 
+// Parcurgeri
 void afisarePreordine(Nod* p) {
     if (p) {
         cout << p->data << " ";
@@ -27,16 +28,17 @@ void afisarePostordine(Nod* p) {
     }
 }
 
+// Creare nod nou
 Nod* makeNod(int val) {
-    Nod *x = new Nod;
+    Nod* x = new Nod;
     x->data = val;
     x->stg = nullptr;
     x->drt = nullptr;
     return x;
 }
 
-//iterativ
-void inserare(Nod *&rad, int val) {
+// Inserare iterativa
+void inserare(Nod*& rad, int val) {
     if (rad == nullptr) {
         rad = makeNod(val);
         return;
@@ -47,57 +49,93 @@ void inserare(Nod *&rad, int val) {
 
     while (curent != nullptr) {
         parinte = curent;
-        if (val < curent->data)
+        if (val < curent->data) {
             curent = curent->stg;
-        else if (val > curent->data)
+        } else if (val > curent->data) {
             curent = curent->drt;
-        else
-            return;
+        } else {
+            return; // valoare deja existenta
+        }
     }
 
-    if (val < parinte->data)
+    if (val < parinte->data) {
         parinte->stg = makeNod(val);
-    else
+    } else {
         parinte->drt = makeNod(val);
+    }
 }
 
-// iterativ
-bool search(Nod *&rad, int val) {
-    while(rad) {
-        if(rad->data == val) {
+// Cautare iterativa
+bool search(Nod* rad, int val) {
+    while (rad) {
+        if (rad->data == val) {
             return true;
-        } else if(val < rad->data) {
+        } else if (val < rad->data) {
             rad = rad->stg;
-        } else if (val > rad->data) {
+        } else {
             rad = rad->drt;
         }
-    }  
-    return false; 
+    }
+    return false;
 }
 
-int nrCopii(Nod *rad) {
+// Returneaza numarul de copii (0, 1 sau 2)
+int nrCopii(Nod* rad) {
     int nr = 0;
-    if(rad->stg) {
-         nr++;
+    if (rad->stg) {
+        nr++;
     }
-    if(rad->drt) {
+    if (rad->drt) {
         nr++;
     }
     return nr;
 }
 
-void deleteNod(Nod *&rad, int val) {
-    if (rad == nullptr) return;
+// Sterge radacina
+void deleteRoot(Nod*& rad) {
+    Nod* p = rad;
+
+    if (rad->stg == nullptr) {
+        rad = rad->drt;
+    } else if (rad->drt == nullptr) {
+        rad = rad->stg;
+    } else {
+        Nod* inlocuitor = removeGreatest(rad->stg);
+        inlocuitor->stg = rad->stg;
+        inlocuitor->drt = rad->drt;
+        rad = inlocuitor;
+    }
+
+    delete p;
+}
+
+// Functie auxiliara pentru stergerea nodului maxim dintr-un subarbore
+Nod* removeGreatest(Nod*& r) {
+    if (r->drt == nullptr) {
+        Nod* p = r;
+        r = r->stg;
+        return p;
+    } else {
+        return removeGreatest(r->drt);
+    }
+}
+
+// Stergere nod cu valoare data
+void deleteNod(Nod*& rad, int val) {
+    if (rad == nullptr) {
+        return;
+    }
 
     Nod* curent = rad;
     Nod* parinte = nullptr;
 
     while (curent && curent->data != val) {
         parinte = curent;
-        if (val < curent->data)
+        if (val < curent->data) {
             curent = curent->stg;
-        else
+        } else {
             curent = curent->drt;
+        }
     }
 
     if (curent == nullptr) {
@@ -105,85 +143,43 @@ void deleteNod(Nod *&rad, int val) {
         return;
     }
 
-    //3 cazuri (0/1/2)  
     int nr = nrCopii(curent);
-    //caz 0 copii
+
+    // Caz 0 copii
     if (nr == 0) {
         if (parinte == nullptr) {
             deleteRoot(rad);
         } else if (parinte->stg == curent) {
             parinte->stg = nullptr;
             delete curent;
-        } else if (parinte->drt == curent) {
+        } else {
             parinte->drt = nullptr;
             delete curent;
         }
         return;
     }
 
-    //caz 1 copil
-    if(nr == 1) {
-        if(curent->stg) {
-            if(parinte == nullptr) {
-                rad = curent->stg;
-                delete curent;
-            } else {
-                if(parinte->stg == curent) {
-                    parinte->stg = curent->stg;
-                    delete curent;
-                } else if(parinte->drt == curent) {
-                    parinte->drt = curent->stg;
-                    delete curent;
-                }
-            }
-        }
-        if(curent->drt && curent->stg == nullptr) {
-            if(parinte == nullptr) {
-                rad = curent->drt;
-                delete curent;
-            } else {
-                if(parinte->stg == curent) {
-                    parinte->stg = curent->drt;
-                    delete curent;
-                } else if(parinte->drt == curent) {
-                    parinte->drt = curent->drt;
-                    delete curent;
-                }
-            }
+    // Caz 1 copil
+    if (nr == 1) {
+        Nod* copil = (curent->stg) ? curent->stg : curent->drt;
+
+        if (parinte == nullptr) {
+            rad = copil;
+        } else if (parinte->stg == curent) {
+            parinte->stg = copil;
+        } else {
+            parinte->drt = copil;
         }
 
+        delete curent;
         return;
     }
-    //caz 2 copii 
+
+    // Caz 2 copii
     if (nr == 2) {
         Nod* inlocuitor = removeGreatest(curent->stg);
         curent->data = inlocuitor->data;
         delete inlocuitor;
         return;
-    }
-}
-
-void deleteRoot(Nod *&rad) {
-    Nod* p = rad;
-    if( rad->stg==0) 
-        rad = rad->drt;
-    else if( rad->drt==0) 
-        rad = rad->stg;
-    else {
-        rad = removeGreatest (rad->stg);
-        rad->stg = p->stg;
-        rad->drt = p->drt;
-    }
-    delete p;
-}
-
-Nod* removeGreatest(Nod*& r) {
-    Nod* p;
-    if(r->drt == nullptr) {
-        p = r;
-        r = r->stg;
-        return p;
-    } else {
-        return removeGreatest(r->drt);
     }
 }
