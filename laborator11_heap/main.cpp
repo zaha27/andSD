@@ -12,15 +12,14 @@ int main() {
     insertHeap(heap, n, 50);
     insertHeap(heap, n, 15);
 
-    cout << "Heap-ul dupa inserari: ";
+    printHeap(heap, n);
+    removeHeap(heap, n);
     printHeap(heap, n);
 
-    cout << "Element scos: " << removeHeap(heap, n) << "\n";
-    cout << "Heap-ul dupa stergere: ";
+    int de_sortat[] = [5, 4, 3, 1, 2, 6, 7];
+    n = 7;
+    sortare_aplicatia1(de_sortat, heap, n);
     printHeap(heap, n);
-
-    // Heap sort
-    heapSort(heap, n);
 
     return 0;
 }

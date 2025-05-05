@@ -16,6 +16,6 @@ void sortare_aplicatia1(int de_sortat[], int heap[], int n) {
     } while(ret_val != -1);
 }
 
-void sortare_aplicatia2(int de_sortat[], int heap[], int n) {
+void sortare_aplicatia2(int de_sortat[], int heap[], int n, int varianta) {
     
 }

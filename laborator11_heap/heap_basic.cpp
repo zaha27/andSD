@@ -2,7 +2,7 @@
 #include "heap.h"
 using namespace std;
 
-void insertHeap(int heap[100], int &n, int value) {
+void insertHeap(int heap[], int &n, int value) {
     heap[++n] = value;
     int fiu = n;
     int parinte = n / 2;
@@ -41,4 +41,11 @@ int removeHeap(int heap[], int& n) {
     }
 
     return to_return;
+}
+
+void printHeap(int heap[], int n) {
+    for(int i = 1; i <= n; ++i) {
+        cout << heap[i] << ' ';
+    }
+    cout << '\n';
 }
