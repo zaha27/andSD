@@ -19,7 +19,7 @@ void insertHeap(int heap[100], int &n, int value) {
 
 int removeHeap(int heap[], int& n) {
     if(!n) {
-        exit(1);
+        return -1;
     } else {
         int to_return = heap[1];
         heap[1] = heap[n--];
@@ -39,30 +39,3 @@ int removeHeap(int heap[], int& n) {
     }
     return to_return;
 }
-
-
-
-int removeHeap(int heap[], int& n) {
-    if (n == 0) {
-        cout << "Heap gol!\n";
-        return -1;
-    }
-    int maxVal = heap[1];
-    heap[1] = heap[n];
-    n--;
-
-    int i = 1;
-    while (2 * i <= n) {
-        int fiu = 2 * i;
-        if (fiu + 1 <= n && heap[fiu + 1] > heap[fiu])
-            fiu++;
-        if (heap[i] < heap[fiu]) {
-            swap(heap[i], heap[fiu]);
-            i = fiu;
-        } else {
-            break;
-        }
-    }
-    return maxVal;
-}
-
