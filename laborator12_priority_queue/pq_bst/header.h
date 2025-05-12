@@ -2,8 +2,9 @@
 #define HEADER_H_
 
 struct Nod{
-    Nod* stg, drt;
     int data;
+    Nod* stg;
+    Nod* drt;
 };
 
 void insert(Nod*& rad, int val);
