@@ -15,11 +15,22 @@ void put(Queue& Q, Atom a) {
     temp->data = a;
     temp->succ = nullptr;
 
-    if (isEmpty(Q)) {
-        Q.head = Q.tail = temp;
+    if (!isEmpty(Q)) {
+        if (a > Q.head->data) { //a e cek mai mare 
+            temp->succ = Q.head;
+            Q.head = temp;
+            return;
+        }
+        //altfel
+        Element* p = Q.head;
+        for(; p != Q.tail && p->succ->data >= a; p = p->succ)
+            ;
+
+        temp->succ = p->succ;
+        p->succ = temp;
+
     } else {
-        Q.tail->succ = temp;
-        Q.tail = temp;
+        Q.head = Q.tail = temp;
     }
 }
 

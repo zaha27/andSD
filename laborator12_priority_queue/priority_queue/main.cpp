@@ -1,23 +1,22 @@
-#include "header.h"
 #include <iostream>
+#include "header.h"
+
 using namespace std;
 
 int main() {
-    Queue Q;
-    initQueue(Q);
+    Queue q;
+    initQueue(q);
 
-    put(Q, 1);
-    put(Q, 2);
-    put(Q, 3);
+    //priroitaitea e chiar numaruil 
+    put(q, 10);
+    put(q, 5);
+    put(q, 20);
+    put(q, 15);
 
-    cout << front(Q) << " ";  // 1
-    cout << get(Q) << " ";    // 1
-    cout << get(Q) << " ";    // 2
-
-    put(Q, 4);
-    cout << front(Q) << " ";  // 3
-    cout << get(Q) << " ";    // 3
-    cout << get(Q) << endl;   // 4
-
+    cout << "scoase:\n";
+    while (!isEmpty(q)) { 
+        cout << get(q) << " ";
+    }
+    cout << '\n';
     return 0;
 }
