@@ -1,0 +1,15 @@
+- **Laborator 1 - Complexitati**: introducere in notatiile mari O si analiza a complexitatii algoritmilor.
+- **Laborator 2 - Vectori**: operatii de baza si sortare pe vectori dinamici.
+- **Laborator 3 - LSI**: implementarea listelor simplu inlantuite si parcurgeri.
+- **Laborator 4 - Liste**: liste dublu inlantuite si tehnici de manipulare.
+- **Laborator 5 - Stiva**: utilizarea structurilor de tip stiva pentru diverse probleme.
+- **Laborator 6 - Coada**: implementarea cozilor si aplicatii practice.
+- **Laborator 7 - Hashmap**: introducere in tabele de dispersie si tratarea coliziunilor.
+- **Laborator 8 - Arbori Binari**: structuri arbore binar si traversari.
+- **Laborator 9 - BST**: arbori binari de cautare, operatii de inserare si stergere.
+- **Laborator 10 - AVL**: arbori AVL cu rotatii pentru echilibrare.
+- **Laborator 11 - Heap**: structuri heap si implementarea lor.
+- **Laborator 12 - Priority Queue**: cozi de prioritati bazate pe heap.
+- **Laborator 13 - Graph**: reprezentari si algoritmi de baza pe grafuri.
+- **Laborator 14 - Djikstra**: calculul drumurilor minime folosind algoritmul Djikstra.
+- **Pregatire Test**: exercitii de recapitulare pentru evaluare.
